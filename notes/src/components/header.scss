@@ -1,5 +1,13 @@
 .headerWrapper{
+  :first-child{
+    align-self: flex-start;
+  }
   display:flex;
   width: 100%;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  
+  border-bottom: 2px solid rgba(230, 232, 230, 1);
+  height: 150px;
 }
