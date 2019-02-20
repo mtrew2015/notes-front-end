@@ -1,0 +1,15 @@
+.navLinks{
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  color: blue;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top:30px;
+  .link{
+    margin-top:15px;
+    :hover{
+      cursor: pointer;
+    }
+  }
+}
