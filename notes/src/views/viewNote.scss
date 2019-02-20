@@ -1,0 +1,32 @@
+.editNoteView{
+  border: 2px solid green;
+  width: 100%;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p,h1,h2{
+    color:  rgba(230, 232, 230, 1);
+  }
+  .box{
+    display:flex;
+    flex-direction: column;
+    background-color: rgba(230, 232, 230, 1);
+    margin-top: 10px;
+    width:50%;
+    height: 300px;
+    border: 2px solid  rgba(230, 232, 230, 1);
+    
+    h2, p{
+     color: rgba(91, 97, 138, 1)  
+    }
+    h2{
+      margin-bottom:20px;
+      text-decoration: underline;
+      font-weight: bolder;
+      align-self: center;
+    }
+    
+  }
+}

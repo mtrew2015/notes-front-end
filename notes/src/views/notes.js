@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Note from '../components/note';
+import {Link} from 'react-router-dom'
 import './notes.scss';
 
  class Notes extends Component {
@@ -7,8 +8,9 @@ import './notes.scss';
     const {notes} = this.props.state
     return (
       <div className="noteSection">
-      {notes.map(note => (<Note key={note.id}{...note}/>))}
+        {notes.map(note => (<Note key={note.id}{...note}/>))}
       </div>
+    
     )
   }
 }
