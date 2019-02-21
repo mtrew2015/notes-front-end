@@ -1,6 +1,7 @@
 import React from 'react'
 import './header.scss';
 import SidebarNav from './sidebar';
+import {Link} from 'react-router-dom';
 
 export default function Header(props) {
   return (
@@ -8,7 +9,10 @@ export default function Header(props) {
       <SidebarNav />
       <h1>Lambda Notes</h1>
       <h2>Lambda Notes Will Keep You Organized!</h2>
-      <h3>Welcome {props.state.userName}</h3>
-    </div>
+      <div className='welcome'>
+      {localStorage.getItem('token') !==null ?<h3>Welcome {props.state.userName}</h3>: null}
+      {localStorage.getItem('token') !== null ?  <Link to="/" className="logout" onClick={props.logout}>Logout</Link>:null}
+      </div>
+      </div>
   )
 }

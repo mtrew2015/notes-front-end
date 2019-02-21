@@ -23,7 +23,7 @@ class NewNote extends Component {
   }
   render() {
     {
-      if (this.props.userName) {
+      if (localStorage.getItem('username') !== null) {
         return (
           <div className="create">
             <h1>Create New Note:</h1>

@@ -53,6 +53,7 @@ class Register extends Component {
     this.props.history.push('/')
   }
   render() {
+    console.log(this.state)
     return (
       <div className="registerContainer">
         <h1>Register</h1>

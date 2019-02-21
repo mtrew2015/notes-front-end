@@ -9,5 +9,34 @@
   justify-content: center;
   
   border-bottom: 2px solid rgba(230, 232, 230, 1);
-  height: 150px;
+  height: 180px;
+  .welcome{
+    width: 100%;
+    padding: 10px;
+    display:flex;
+    justify-content: space-between;
+    .logout{
+      font-size: 1.6rem;
+      color:  rgba(230, 232, 230, 1);
+      font-family: inherit;
+      font-weight: bold;
+      &:hover{
+        cursor: pointer;
+        color:rgba(121, 169, 209, 1);
+        transform: inherit;
+        
+      }
+    }
+   h3{
+    font-size: 1.6rem;
+      color:  rgba(230, 232, 230, 1);
+      font-family: inherit;
+      font-weight: bold;
+  }
+
+
+  }
+  
+  
+ 
 }

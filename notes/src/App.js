@@ -29,8 +29,15 @@ class App extends Component {
         .catch(err => console.log(err));
     }
   }
+  logout = () => {
+    localStorage.clear()
+    this.setState({
+      userName: ''
+    })
+  }
   login = () => {
-    this.setState({ isLoggedIn: true, userName: localStorage.getItem('username') })
+    this.setState({ isLoggedIn: true, userName: localStorage.getItem('username') });
+    this.getNotes();
   }
   showError = (message) => {
     this.growl.show({ severity: 'warn', summary: 'Error', detail: 'please Log In' })
@@ -67,10 +74,11 @@ getNotes = () => {
   }
 
   render() {
+    console.log(this.state, 'state from home')
     return (
       <div className="container">
-        <Route path="/" render={(props) => (<Header {...props} state={this.state} />)} />
-        <Route exact path="/" render={(props) => (<Home {...props} state={this.state} />)} />
+        <Route path="/" render={(props) => (<Header {...props} state={this.state} logout={this.logout} />)} />
+        <Route exact path="/" render={(props) => (<Home login={this.login}{...props} state={this.state} />)} />
         <Route path="/view/:id" render={(props) => <ViewNote notes={this.state.notes} {...props} deleteNote={this.deleteNote} />} />
         <Route path="/update/:id" render={(props) => (<UpdateNote {...props} updateNote={this.updateNote} notes={this.state.notes}/>)} />
         <Route path="/create" render={(props) => (<NewNote userName={this.state.userName} createNote={this.createNote} {...props} />)} />
@@ -82,6 +90,6 @@ getNotes = () => {
   }
 }
 
-export default App;
+export default withRouter (App);
 
 

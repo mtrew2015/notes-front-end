@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './viewNote.scss';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios';
 
 class ViewNote extends Component {

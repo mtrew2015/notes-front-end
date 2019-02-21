@@ -12,7 +12,7 @@ class Login extends Component {
     })
   }
   handleChange = (e) => {
-    this.setState=({[e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value })
   }
   handleSubmit = (e) => {
     e.preventDefault();
@@ -20,27 +20,31 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password,
     }
+    console.log(user);
     axios
       .post('http://localhost:5000/api/users/login', user)
       .then(response => {
+        console.log(response);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('username', response.data.username)
         this.props.login();
-        this.props.history.push('/')
+        this.props.history.push('/');
+        
       })
     .catch(err => console.log(err));
+    
       
   }
   render() {
-    this.handleChange = this.handleChange.bind(this);
     console.log(this.state);
+    console.log(this.props)
     return (
       <div className="loginContainer">
         <h1>Please Login</h1>
         <form className="loginForm" onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} type="text" name="username" placeholder="Username" required />
-          <input onChange={this.handleChange} type="password" name="password" placeholder="Password" required />
-         <button type="submit">Submit</button>
+          <input onChange={this.handleChange} type="text" name="username" placeholder="Username"  />
+          <input onChange={this.handleChange} type="password" name="password" placeholder="Password"  />
+         <button>Submit</button>
         </form>
       </div>
     )
@@ -48,4 +52,4 @@ class Login extends Component {
 }
 
 
-export default withRouter(Login)
+export default Login
