@@ -17,13 +17,15 @@ class SideBarNav extends Component {
     return (
       <div>
       <Sidebar visible={this.state.visible} className="ui-sidebar-md" position="left" onHide={(e) => this.setState({ visible: false })}>
+      {}
       <ul className="navLinks">
       <Link className="link" to="/login">Login</Link>
       <Link className="link" to="/create">Create Note</Link>
-      <Link className="link" to="/viewnotes">View Notes</Link>
+      <Link className="link" to="/">View Notes</Link>
+      <Link className="link" to="/register">Register</Link>
       </ul>
       </Sidebar>
-        <Button icon="pi pi-arrow-right" onClick={(e) => this.setState({ visible: true })} />
+        <Button icon="pi pi-bars" onClick={(e) => this.setState({ visible: true })} />
       </div>
 
 

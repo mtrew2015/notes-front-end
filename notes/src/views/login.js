@@ -1,0 +1,51 @@
+import React, { Component } from 'react'
+import './login.scss';
+import { withRouter } from 'react-router-dom';
+import axios from 'axios';
+
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = ({
+      username:'',
+      password:''
+    })
+  }
+  handleChange = (e) => {
+    this.setState=({[e.target.name]: e.target.value })
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const user = {
+      username: this.state.username,
+      password: this.state.password,
+    }
+    axios
+      .post('http://localhost:5000/api/users/login', user)
+      .then(response => {
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('username', response.data.username)
+        this.props.login();
+        this.props.history.push('/')
+      })
+    .catch(err => console.log(err));
+      
+  }
+  render() {
+    this.handleChange = this.handleChange.bind(this);
+    console.log(this.state);
+    return (
+      <div className="loginContainer">
+        <h1>Please Login</h1>
+        <form className="loginForm" onSubmit={this.handleSubmit}>
+          <input onChange={this.handleChange} type="text" name="username" placeholder="Username" required />
+          <input onChange={this.handleChange} type="password" name="password" placeholder="Password" required />
+         <button type="submit">Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
+
+
+export default withRouter(Login)

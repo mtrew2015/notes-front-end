@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Notes from './notes';
+import Login from './login';
 import './home.scss';
 
-
-
- class Home extends Component {
+class Home extends Component {
   render() {
     const { state } = this.props;
     if (this.props.state.userName) {
@@ -18,7 +17,7 @@ import './home.scss';
     else {
       return (
         <div>
-          <h1>No Notes</h1>
+          <Login/>
         </div>
       )
     }

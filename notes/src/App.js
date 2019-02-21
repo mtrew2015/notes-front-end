@@ -5,6 +5,8 @@ import Header from './components/header';
 import ViewNote from './views/viewNote';
 import UpdateNote from './views/updateNote';
 import NewNote from './views/newNote';
+import Register from'./views/register';
+import Login from './views/login';
 import './App.scss';
 import axios from 'axios';
 import { Growl } from 'primereact/growl';
@@ -14,7 +16,7 @@ class App extends Component {
     super(props)
     this.state = {
       notes: [],
-      userName: 'mtrew',
+      userName: '',
       isLoggedIn: false,
     }
   }
@@ -26,6 +28,9 @@ class App extends Component {
         .then(response => this.setState({ notes: response.data }))
         .catch(err => console.log(err));
     }
+  }
+  login = () => {
+    this.setState({ isLoggedIn: true, userName: localStorage.getItem('username') })
   }
   showError = (message) => {
     this.growl.show({ severity: 'warn', summary: 'Error', detail: 'please Log In' })
@@ -64,17 +69,19 @@ getNotes = () => {
   render() {
     return (
       <div className="container">
-        <Route path="/" render={(props) => (<Header {...props} />)} />
+        <Route path="/" render={(props) => (<Header {...props} state={this.state} />)} />
         <Route exact path="/" render={(props) => (<Home {...props} state={this.state} />)} />
         <Route path="/view/:id" render={(props) => <ViewNote notes={this.state.notes} {...props} deleteNote={this.deleteNote} />} />
         <Route path="/update/:id" render={(props) => (<UpdateNote {...props} updateNote={this.updateNote} notes={this.state.notes}/>)} />
-        <Route path="/create" render={(props) => (<NewNote userName={this.state.userName}createNote={this.createNote} {...props} />)} />
+        <Route path="/create" render={(props) => (<NewNote userName={this.state.userName} createNote={this.createNote} {...props} />)} />
+        <Route path="/register" render={(props) => (<Register login={this.login}{...props} />)} />
+        <Route path="/login" render={(props) => (<Login login={this.login}{...props} />)} />
         <Growl ref={(el) => this.growl = el} />
       </div>
     );
   }
 }
 
-export default withRouter(App);
+export default App;
 
 

@@ -18,20 +18,26 @@ class NewNote extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     console.log('button pushed')
-    this.props.createNote({ title: this.state.title, details: this.state.text, userName:this.props.userName});
+    this.props.createNote({ title: this.state.title, details: this.state.text, userName: this.props.userName });
     this.props.history.push('/')
   }
   render() {
-    return (
-      <div className="create">
-        <h1>Create New Note:</h1>
-        <form onSubmit={this.submitHandler}>
-          <input placeholder="Title" name="title" onChange={this.changeHandler} value={this.state.title}></input>
-          <textarea placeholder="Your Note..."name="text" onChange={this.changeHandler} value={this.state.text} className="textArea"></textarea>
-          <button type="submit" color="info">Submit</button>
-        </form>
-      </div>
-    )
+    {
+      if (this.props.userName) {
+        return (
+          <div className="create">
+            <h1>Create New Note:</h1>
+            <form onSubmit={this.submitHandler}>
+              <input placeholder="Title" name="title" onChange={this.changeHandler} value={this.state.title}></input>
+              <textarea placeholder="Your Note..." name="text" onChange={this.changeHandler} value={this.state.text} className="textArea"></textarea>
+              <button type="submit" color="info">Submit</button>
+            </form>
+          </div>
+        )
+      } else {
+        return (<h1 className="needToLogin">You Must Be Logged In To Do That!</h1>)
+      }
+    }
   }
 }
 
