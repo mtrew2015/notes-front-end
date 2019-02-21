@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './viewNote.scss';
+import {withRouter} from 'react-router-dom'
 import axios from 'axios';
 
 class ViewNote extends Component {
@@ -7,13 +8,13 @@ class ViewNote extends Component {
     super(props);
     this.state = {
       title: '',
-      details:'',
+      details: '',
       id: ''
     }
   }
-  
-  componentDidMount(){
-    const {match, notes} = this.props;
+
+  componentDidMount() {
+    const { match, notes } = this.props;
     console.log(notes);
     const note = notes.find(note => note.id === Number(match.params.id));
     this.setState({
@@ -22,22 +23,33 @@ class ViewNote extends Component {
       id: note.id
     })
   };
+  deleteHandler = () => {
+    const id = this.state.id;
+    this.props.deleteNote(id)
+  }
+
+  updateHandler = (e) => {
+    e.preventDefault()
+    const id = this.state.id;
+    this.props.history.push(`/update/${id}`)
+  }
 
   render() {
+    console.log(this.props.history)
     return (
-        <div className="editNoteView">
-        <box className ="box">
+      <div className="editNoteView">
+        <div className="box">
           <h2>{this.state.title}</h2>
           <p>{this.state.details}</p>
           <div className="buttonContainer">
-          <button className="edit">Edit</button>
-          <button className="delete">Delete</button>
+            <button onClick={this.updateHandler} className="edit">Edit</button>
+            <button onClick={this.deleteHandler} className="delete">Delete</button>
           </div>
-        </box>
-
         </div>
-      )
-    }
-  }
 
-export default ViewNote
+      </div>
+    )
+  }
+}
+
+export default withRouter(ViewNote)

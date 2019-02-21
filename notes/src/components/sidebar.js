@@ -19,7 +19,7 @@ class SideBarNav extends Component {
       <Sidebar visible={this.state.visible} className="ui-sidebar-md" position="left" onHide={(e) => this.setState({ visible: false })}>
       <ul className="navLinks">
       <Link className="link" to="/login">Login</Link>
-      <Link className="link" to="/createnote">Create Note</Link>
+      <Link className="link" to="/create">Create Note</Link>
       <Link className="link" to="/viewnotes">View Notes</Link>
       </ul>
       </Sidebar>
