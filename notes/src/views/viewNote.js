@@ -29,6 +29,10 @@ class ViewNote extends Component {
         <box className ="box">
           <h2>{this.state.title}</h2>
           <p>{this.state.details}</p>
+          <div className="buttonContainer">
+          <button className="edit">Edit</button>
+          <button className="delete">Delete</button>
+          </div>
         </box>
 
         </div>

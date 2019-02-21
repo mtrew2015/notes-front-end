@@ -4,14 +4,11 @@ import './note.scss';
 
 function Note(props) {
   return (
-    <div className="noteBox">
+    <Link className="noteBox" to={`/view/${props.id}`}>
       <h3>{props.title}</h3>
       <p>{props.details}</p>
-    </div>
-    
-
-
-  )
+    </Link>
+)
 }
 
 export default Note;

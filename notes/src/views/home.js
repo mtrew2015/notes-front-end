@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Notes from './notes';
 import './home.scss';
-import {withRouter} from 'react-router-dom'
+
 
 
  class Home extends Component {

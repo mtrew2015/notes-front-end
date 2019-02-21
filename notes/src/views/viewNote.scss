@@ -19,7 +19,9 @@
     border: 2px solid  rgba(230, 232, 230, 1);
     
     h2, p{
-     color: rgba(91, 97, 138, 1)  
+     color: rgba(91, 97, 138, 1);
+     margin-left: 10px;
+     margin-top: 5px;
     }
     h2{
       margin-bottom:20px;
@@ -28,5 +30,34 @@
       align-self: center;
     }
     
+  }
+  .buttonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100%;
+    button{
+      margin-bottom: 10%;
+      width: 20%;
+      height: 40px;
+      border: 2px solid black;
+      border-radius: 5px;
+      box-shadow: 5px 5px;
+      color: rgba(230, 232, 230, 1);
+        font-size: 1.2rem;
+        font-weight: bold;
+
+     
+
+    }
+     .edit{
+       background-color:  rgba(91, 97, 138, 1)
+
+      };
+      .delete{
+        background-color: rgba(121, 169, 209, 1);
+        
+      };
   }
 }

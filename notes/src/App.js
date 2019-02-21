@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import Home from './views/home';
 import Header from './components/header';
 import ViewNote from './views/viewNote';
@@ -20,7 +20,7 @@ class App extends Component {
     if (this.state.userName) {
       const username = this.state.userName;
       axios
-        .get(`http://localhost:5000/api/posts/${username}`)
+        .get(`http://localhost:5000/api/posts/notes/${username}`)
         .then(response => this.setState({notes: response.data}))
         .catch(err => console.log(err));
     }
@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <div className="container">
         <Route path="/" render={(props) => (<Header {...props} />)} />
-        <Route exact path="/home" render={(props) => (<Home {...props} state={this.state} />)} />
+        <Route exact path="/" render={(props) => (<Home {...props} state={this.state} />)} />
         <Route path="/view/:id" render={(props) => <ViewNote notes={this.state.notes} {...props} />} />
         <Growl ref={(el) => this.growl = el} />
       </div>
