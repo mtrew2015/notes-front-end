@@ -22,7 +22,7 @@ class Login extends Component {
     }
     console.log(user);
     axios
-      .post('http://localhost:5000/api/users/login', user)
+      .post('https://agile-taiga-82193.herokuapp.com/api/users/login', user)
       .then(response => {
         console.log(response);
         localStorage.setItem('token', response.data.token);

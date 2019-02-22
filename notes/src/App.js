@@ -24,7 +24,7 @@ class App extends Component {
     if (this.state.userName) {
       const username = this.state.userName;
       axios
-        .get(`http://localhost:5000/api/posts/notes/${username}`)
+        .get(`https://agile-taiga-82193.herokuapp.com/api/posts/notes/${username}`)
         .then(response => this.setState({ notes: response.data }))
         .catch(err => console.log(err));
     }
@@ -44,7 +44,7 @@ class App extends Component {
   }
   deleteNote = (id) => {
     axios
-      .delete(`http://localhost:5000/api/posts/${id}`)
+      .delete(`https://agile-taiga-82193.herokuapp.com/api/posts/${id}`)
       .then(() => (this.getNotes()))
       .then(() => (this.props.history.push('/')))
       .catch(err => console.log(err));
@@ -52,7 +52,7 @@ class App extends Component {
   }
   updateNote = (id, note) => {
     axios
-      .put(`http://localhost:5000/api/posts/update/${id}`,note)
+      .put(`https://agile-taiga-82193.herokuapp.com/api/posts/update/${id}`,note)
       .then(() => this.getNotes())
       .then(() => this.props.history.push('/'))
       .catch(err => console.log(err))
@@ -61,13 +61,13 @@ class App extends Component {
 getNotes = () => {
     const username = this.state.userName;
     axios
-      .get(`http://localhost:5000/api/posts/notes/${username}`)
+      .get(`https://agile-taiga-82193.herokuapp.com/api/posts/notes/${username}`)
       .then(response => this.setState({notes: response.data}))
       .catch(err => console.log(err));
   }
   createNote = (note) => {
     axios
-      .post("http://localhost:5000/api/posts/newpost", note)
+      .post("https://agile-taiga-82193.herokuapp.com/api/posts/newpost", note)
       .then(() => (this.getNotes()))
       .then(() => this.props.history.push('/'))
       .catch(err => console.log(err))

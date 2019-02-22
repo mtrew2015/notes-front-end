@@ -41,7 +41,7 @@ class Register extends Component {
       role: this.state.role
     }
     axios
-      .post('http://localhost:5000/api/users/signup', user)
+      .post('https://agile-taiga-82193.herokuapp.com/api/users/signup', user)
       .then(response => {
         console.log(response);
         localStorage.setItem('token', response.data.token);
