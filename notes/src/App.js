@@ -21,8 +21,9 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    if (this.state.username) {
-      const username = this.state.username;
+    if (localStorage.getItem('username') !== null && localStorage.getItem('token') !== null) {
+      const username = localStorage.getItem('username');
+      this.setState({username: username});
       axios
         .get(`https://agile-taiga-82193.herokuapp.com/api/posts/notes/${username}`)
         .then(response => this.setState({ notes: response.data }))
