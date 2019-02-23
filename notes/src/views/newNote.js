@@ -8,7 +8,7 @@ class NewNote extends Component {
     this.state = {
       text: '',
       title: '',
-      userName: this.props.userName
+      username:'mtrew'
     }
   }
   changeHandler = (e) => {
@@ -18,7 +18,7 @@ class NewNote extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     console.log('button pushed')
-    this.props.createNote({ title: this.state.title, details: this.state.text, userName: this.props.userName });
+    this.props.createNote({ title: this.state.title, details: this.state.text, username: this.props.username });
     this.props.history.push('/')
   }
   render() {

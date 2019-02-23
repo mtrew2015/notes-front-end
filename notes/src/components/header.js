@@ -10,7 +10,7 @@ export default function Header(props) {
       <h1>Lambda Notes</h1>
       <h2>Lambda Notes Will Keep You Organized!</h2>
       <div className='welcome'>
-      {localStorage.getItem('token') !==null ?<h3>Welcome {props.state.userName}</h3>: null}
+      {localStorage.getItem('token') !==null ?<h3>Welcome {props.state.username}</h3>: null}
       {localStorage.getItem('token') !== null ?  <Link to="/" className="logout" onClick={props.logout}>Logout</Link>:null}
       </div>
       </div>

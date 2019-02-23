@@ -16,13 +16,13 @@ class App extends Component {
     super(props)
     this.state = {
       notes: [],
-      userName: '',
+      username: '',
       isLoggedIn: false,
     }
   }
   componentDidMount() {
-    if (this.state.userName) {
-      const username = this.state.userName;
+    if (this.state.username) {
+      const username = this.state.username;
       axios
         .get(`https://agile-taiga-82193.herokuapp.com/api/posts/notes/${username}`)
         .then(response => this.setState({ notes: response.data }))
@@ -32,11 +32,11 @@ class App extends Component {
   logout = () => {
     localStorage.clear()
     this.setState({
-      userName: ''
+      username: ''
     })
   }
   login = () => {
-    this.setState({ isLoggedIn: true, userName: localStorage.getItem('username') });
+    this.setState({ isLoggedIn: true, username: localStorage.getItem('username') });
     this.getNotes();
   }
   showError = (message) => {
@@ -59,7 +59,7 @@ class App extends Component {
   }
 
 getNotes = () => {
-    const username = this.state.userName;
+    const username = this.state.username;
     axios
       .get(`https://agile-taiga-82193.herokuapp.com/api/posts/notes/${username}`)
       .then(response => this.setState({notes: response.data}))
@@ -81,7 +81,7 @@ getNotes = () => {
         <Route exact path="/" render={(props) => (<Home login={this.login}{...props} state={this.state} />)} />
         <Route path="/view/:id" render={(props) => <ViewNote notes={this.state.notes} {...props} deleteNote={this.deleteNote} />} />
         <Route path="/update/:id" render={(props) => (<UpdateNote {...props} updateNote={this.updateNote} notes={this.state.notes}/>)} />
-        <Route path="/create" render={(props) => (<NewNote userName={this.state.userName} createNote={this.createNote} {...props} />)} />
+        <Route path="/create" render={(props) => (<NewNote username={this.state.username} createNote={this.createNote} {...props} />)} />
         <Route path="/register" render={(props) => (<Register login={this.login}{...props} />)} />
         <Route path="/login" render={(props) => (<Login login={this.login}{...props} />)} />
         <Growl ref={(el) => this.growl = el} />
