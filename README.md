@@ -4,3 +4,5 @@
 
 ### 
 This project is my front end project for Lambda School Front End for my Back End Project. I decided to re-structure the front end and make it a better UI experience. It was styled using node-sass primarily and Prime-React UI components minimally used. Most of the design, and formatting is custom SASS.
+
+Deployed Front-End: https://flamboyant-minsky-6e5e31.netlify.com/
